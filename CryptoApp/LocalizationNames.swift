@@ -9,6 +9,7 @@ import Foundation
 
 struct LocalizationNames {
     static let assets = "Assets".localized
+    static let error = "Error".localized
 }
 
 

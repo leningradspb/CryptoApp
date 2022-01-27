@@ -14,6 +14,10 @@ final class AssetsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .green
         setupNavigationBar()
+        let request = CustomRequest("assets/?limit=10")
+        APIManager.shared.makeRequest(request, responseType: AssetModel.self) { [weak self] result in
+            print(result)
+        }
     }
     
     private func setupNavigationBar() {
