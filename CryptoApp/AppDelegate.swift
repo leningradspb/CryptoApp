@@ -18,21 +18,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = tabBar
         self.window?.makeKeyAndVisible()
         
-//        if #available(iOS 13.0, *) {
-//            let tabBarAppearance = UITabBarAppearance()
-//            tabBarAppearance.configureWithTransparentBackground()
-//            tabBarAppearance.backgroundColor = UIColor.white
-//
-//            tabBarAppearance.stackedLayoutAppearance.normal.iconColor = UIColor.systemGray
-//            tabBarAppearance.stackedLayoutAppearance.selected.iconColor =  .cryptoBlue
-//            // #1E792C
-//            UITabBar.appearance().standardAppearance = tabBarAppearance
-//            if #available(iOS 15.0, *) {
-//                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-//            }
-//        } else {
+        if #available(iOS 13.0, *) {
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithTransparentBackground()
+            tabBarAppearance.backgroundColor = UIColor.white
+            
+            tabBarAppearance.stackedLayoutAppearance.normal.iconColor = UIColor.systemGray
+            tabBarAppearance.stackedLayoutAppearance.selected.iconColor =  .cryptoBlue
+            // #1E792C
+            UITabBar.appearance().standardAppearance = tabBarAppearance
+            
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithDefaultBackground()
+            appearance.backgroundColor = .cryptoNavigationGrey
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+            
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            UINavigationBar.appearance().compactAppearance = appearance
+            //            appearance.backgroundEffect = UIBlurEffect(style: .dark)
+            if #available(iOS 15.0, *) {
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }
+        } else {
             UITabBar.appearance().backgroundColor = UIColor.white
-        UITabBar.appearance().tintColor = .cryptoBlue
+            UITabBar.appearance().tintColor = .cryptoBlue
+            UINavigationBar.appearance().isTranslucent = false
+            UINavigationBar.appearance().backgroundColor = .cryptoNavigationGrey
+            UINavigationBar.appearance().barTintColor = .cryptoNavigationGrey
+        }
+//        UINavigationBar.appearance().isTranslucent = false
+//        UIApplication.shared.statusBarUIView?.backgroundColor = .cryptoNavigationGrey
 //        UITabBar.appearance().barTintColor = .cryptoBlue
 //        }
       

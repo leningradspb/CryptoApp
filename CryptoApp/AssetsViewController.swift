@@ -20,6 +20,13 @@ final class AssetsViewController: UIViewController {
         navigationItem.title = LocalizationNames.assets
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
+//        self.navigationController?.navigationBar.backgroundColor = .white
+        
+//        guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
+//
+//        statusBar.backgroundColor = .blue
+//        navigationController?.navigationBar.isTranslucent = false
+       
     }
 
 

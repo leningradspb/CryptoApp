@@ -10,6 +10,8 @@ import UIKit
 extension UIColor {
     /// #007AFF
     static let cryptoBlue = UIColor(hexString: "#007AFF")
+    
+    static let cryptoNavigationGrey = UIColor(hexString: "#F2F2F2") 
 }
 
 extension UIColor {
