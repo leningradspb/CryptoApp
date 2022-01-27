@@ -23,8 +23,8 @@ final class TabBarVC: UITabBarController {
         assetsNC.viewControllers = [assetsVC]
         
         let bubbleIcon = UIImage(named: "bitcoinsign.circle.fill")
-
-        assetsVC.tabBarItem.title = "Assets"
+//        NSLocalizedString("Assets", comment: "")
+        assetsVC.tabBarItem.title = LocalizationNames.assets
         assetsVC.tabBarItem.image = bubbleIcon
         assetsVC.tabBarItem.tag = 0
         

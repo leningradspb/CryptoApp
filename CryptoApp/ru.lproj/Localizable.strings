@@ -1,0 +1,15 @@
+/* 
+  Localize.strings
+  CryptoApp
+
+  Created by Eduard Sinyakov on 27.01.2022.
+  
+*/
+// MARK: - Tab Bar
+
+"Assets" = "Активы";
+
+
+// MARK: - Nav Bar
+
+"Assets" = "Активы";
