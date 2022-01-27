@@ -70,9 +70,9 @@
 			children = (
 				2693101327A3181000ACA99D /* Extensions */,
 				26930FFD27A3140900ACA99D /* AppDelegate.swift */,
+				26930FFF27A3140900ACA99D /* SceneDelegate.swift */,
 				2693101127A3154500ACA99D /* TabBarVC.swift */,
 				2693102227A31E1800ACA99D /* LocalizationNames.swift */,
-				26930FFF27A3140900ACA99D /* SceneDelegate.swift */,
 				2693100127A3140900ACA99D /* AssetsViewController.swift */,
 				2693102027A31D4B00ACA99D /* Localizable.strings */,
 				2693100627A3141300ACA99D /* Assets.xcassets */,
