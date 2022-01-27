@@ -13,6 +13,8 @@
 		2693100727A3141300ACA99D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2693100627A3141300ACA99D /* Assets.xcassets */; };
 		2693100A27A3141300ACA99D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2693100827A3141300ACA99D /* LaunchScreen.storyboard */; };
 		2693101227A3154500ACA99D /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693101127A3154500ACA99D /* TabBarVC.swift */; };
+		2693101527A3182900ACA99D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693101427A3182900ACA99D /* UIColor+Extension.swift */; };
+		2693101727A318AE00ACA99D /* Table+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693101627A318AE00ACA99D /* Table+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		2693100927A3141300ACA99D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2693100B27A3141300ACA99D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2693101127A3154500ACA99D /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		2693101427A3182900ACA99D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		2693101627A318AE00ACA99D /* Table+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Table+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		26930FFC27A3140900ACA99D /* CryptoApp */ = {
 			isa = PBXGroup;
 			children = (
+				2693101327A3181000ACA99D /* Extensions */,
 				26930FFD27A3140900ACA99D /* AppDelegate.swift */,
 				2693101127A3154500ACA99D /* TabBarVC.swift */,
 				26930FFF27A3140900ACA99D /* SceneDelegate.swift */,
@@ -65,6 +70,15 @@
 				2693100B27A3141300ACA99D /* Info.plist */,
 			);
 			path = CryptoApp;
+			sourceTree = "<group>";
+		};
+		2693101327A3181000ACA99D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2693101427A3182900ACA99D /* UIColor+Extension.swift */,
+				2693101627A318AE00ACA99D /* Table+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +153,10 @@
 			files = (
 				2693100227A3140900ACA99D /* AssetsViewController.swift in Sources */,
 				26930FFE27A3140900ACA99D /* AppDelegate.swift in Sources */,
+				2693101727A318AE00ACA99D /* Table+Extension.swift in Sources */,
 				2693101227A3154500ACA99D /* TabBarVC.swift in Sources */,
 				2693100027A3140900ACA99D /* SceneDelegate.swift in Sources */,
+				2693101527A3182900ACA99D /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = tabBar
         self.window?.makeKeyAndVisible()
         
+//        if #available(iOS 13.0, *) {
+//            let tabBarAppearance = UITabBarAppearance()
+//            tabBarAppearance.configureWithTransparentBackground()
+//            tabBarAppearance.backgroundColor = UIColor.white
+//
+//            tabBarAppearance.stackedLayoutAppearance.normal.iconColor = UIColor.systemGray
+//            tabBarAppearance.stackedLayoutAppearance.selected.iconColor =  .cryptoBlue
+//            // #1E792C
+//            UITabBar.appearance().standardAppearance = tabBarAppearance
+//            if #available(iOS 15.0, *) {
+//                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+//            }
+//        } else {
+            UITabBar.appearance().backgroundColor = UIColor.white
+        UITabBar.appearance().tintColor = .cryptoBlue
+//        UITabBar.appearance().barTintColor = .cryptoBlue
+//        }
+      
+        
         return true
     }
 
