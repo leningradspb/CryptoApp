@@ -10,10 +10,10 @@ import UIKit
 class DetailAssetViewController: UIViewController {
     private let chartView = UIView()
     let price = [7672, 8058, 8232, 6987]
-    let xs = [0, 100, 150, 200]
-    let ys = [0, 30, 100, 90]
+    let xs: [CGFloat] = [0, 100, 150, 200]
+    let ys: [CGFloat] = [0, 30, 100, 90]
     let xsEnd = [100, 150, 200, 300]
-    let ysEnd = [30, 100, 90, -190]
+    let ysEnd: [CGFloat] = [30, 100, 90, -190]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +31,9 @@ class DetailAssetViewController: UIViewController {
 //                    let bottomPoint = CGPoint(x: view.frame.midX, y: view.bounds.maxY)
             let topPoint = CGPoint(x: xs[i], y: ys[i])
             
-            let bottomPoint = CGPoint(x: xsEnd[i] , y: ysEnd[i])
-
-            chartView.createDashedLine(from: topPoint, to: bottomPoint, color: .black, strokeLength: 14, gapLength: 0, width: 2)
+            let bottomPoint = CGPoint(x: (chartView.frame.width / CGFloat(xs.count)) * (CGFloat(i) + CGFloat(1)) , y: ysEnd[i])
+            let  strokeLength = Int(chartView.frame.width) / xs.count
+            chartView.createDashedLine(from: topPoint, to: bottomPoint, color: .black, strokeLength: NSNumber(integerLiteral: strokeLength), gapLength: 0, width: 2)
         }
 //        let topPoint = CGPoint(x: view.frame.midX, y: view.bounds.minY)
 //        let bottomPoint = CGPoint(x: view.frame.midX, y: view.bounds.maxY)
