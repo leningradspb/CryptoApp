@@ -66,5 +66,27 @@ extension DetailSettingsViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         44
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var appIcon = "AppIcon"
+        
+        switch icons[indexPath.row] {
+        case LocalizationNames.white:
+            appIcon = "AppIcon"
+        case LocalizationNames.black:
+            appIcon = "AppIcon-1"
+        case LocalizationNames.yellow:
+            appIcon = "AppIcon-2"
+        default:
+            break
+        }
+        UIApplication.shared.setAlternateIconName(appIcon) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("Success!")
+            }
+        }
+    }
 }
 
