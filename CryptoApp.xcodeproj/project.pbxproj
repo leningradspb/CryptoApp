@@ -94,9 +94,7 @@
 				26930FFF27A3140900ACA99D /* SceneDelegate.swift */,
 				2693101127A3154500ACA99D /* TabBarVC.swift */,
 				2693102227A31E1800ACA99D /* LocalizationNames.swift */,
-				2693100127A3140900ACA99D /* AssetsViewController.swift */,
-				2693103627A3DD2200ACA99D /* AssetCell.swift */,
-				2693103427A342C200ACA99D /* AssetModel.swift */,
+				2693103F27A3FF6600ACA99D /* Assets */,
 				2693102027A31D4B00ACA99D /* Localizable.strings */,
 				2693100627A3141300ACA99D /* Assets.xcassets */,
 				2693100827A3141300ACA99D /* LaunchScreen.storyboard */,
@@ -126,6 +124,40 @@
 				2693103927A3E1A100ACA99D /* CustomControls.swift */,
 			);
 			path = Controls;
+			sourceTree = "<group>";
+		};
+		2693103F27A3FF6600ACA99D /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				2693104027A3FF7D00ACA99D /* Controller */,
+				2693104127A3FF8400ACA99D /* Cell */,
+				2693104227A3FF8900ACA99D /* Model */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		2693104027A3FF7D00ACA99D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2693100127A3140900ACA99D /* AssetsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2693104127A3FF8400ACA99D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2693103627A3DD2200ACA99D /* AssetCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		2693104227A3FF8900ACA99D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2693103427A342C200ACA99D /* AssetModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
