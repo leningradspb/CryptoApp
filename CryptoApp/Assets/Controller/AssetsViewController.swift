@@ -15,6 +15,8 @@ final class AssetsViewController: UIViewController {
     private var assets: [AssetModel.Asset] = []
     private var offset: Int = 0
     private let offsetStep: Int = 10
+    private var searchText = ""
+    private var pendingRequestWorkItem: DispatchWorkItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +64,7 @@ final class AssetsViewController: UIViewController {
     }
     
     private func loadAssets() {
-        let request = CustomRequest("assets/?limit=10", params: ["offset": offset])
+        let request = CustomRequest("assets/?limit=10", params: ["offset": offset, "search": searchText])
         APIManager.shared.makeRequest(request, responseType: AssetModel.self) { [weak self] result in
 //            print(result)
             self?.refreshControl.endRefreshing()
@@ -127,5 +129,18 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
 extension AssetsViewController: UISearchControllerDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         print(searchController.searchBar.text)
+        pendingRequestWorkItem?.cancel()
+        
+        let requestWorkItem = DispatchWorkItem { [weak self] in
+            guard let self = self else { return }
+            
+            self.loadAssets()
+        }
+
+        pendingRequestWorkItem = requestWorkItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(350),
+                                      execute: requestWorkItem)
+        searchText = searchController.searchBar.text.orEmpty
+        
       }
 }
