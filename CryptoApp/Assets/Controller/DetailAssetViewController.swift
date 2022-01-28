@@ -58,9 +58,9 @@ class DetailAssetViewController: UIViewController {
             let topPoint = CGPoint(x: prevX, y: y)
             nextY = i == 0 ? y : (constantChartViewHeight - (multiplier * values[i]))
 //            nextY = (multiplier * values[i + 1])
-            let bottomPoint = CGPoint(x: (view.frame.width / CGFloat(values.count)) * (CGFloat(i) + CGFloat(1)) , y: nextY)
+            let bottomPoint = CGPoint(x: (view.frame.width / CGFloat(values.count - 1)) * (CGFloat(i)) , y: nextY)
 //            prevY = y
-            let strokeLength = Int(view.frame.width) / values.count
+            let strokeLength = i == 0 ? 0: Int(view.frame.width) / (values.count - 1)
             print(view.frame.width, strokeLength)
             prevX += CGFloat(strokeLength)
             chartView.createDashedLine(from: topPoint, to: bottomPoint, color: .black, strokeLength: NSNumber(integerLiteral: strokeLength), gapLength: 0, width: 2)
