@@ -10,7 +10,7 @@ import UIKit
 class DetailAssetViewController: UIViewController {
     private let chartView = UIView()
     let price = [7672, 8058, 8232, 6987]
-    let values: [CGFloat] = [5, 10, 12, 15]
+    let values: [CGFloat] = [10, 8, 2, 20]
     private var prevX: CGFloat = 0
     private var nextY: CGFloat = 0
     private let constantChartViewHeight: CGFloat = 130
@@ -33,19 +33,20 @@ class DetailAssetViewController: UIViewController {
         for i in 0..<values.count {
             let value = values[i]
             
-            let multiplier = constantChartViewHeight / (maxValue - minValue)
+            let multiplier = constantChartViewHeight / maxValue
             
-            var y: CGFloat = 0
+//            var y: CGFloat = 0
+//
+//            if minValue == value {
+//                y = 130
+//            } else if maxValue == value {
+//                y = 0
+//            } else {
+//                y = constantChartViewHeight - (multiplier * value)
+//            }
             
-            if minValue == value {
-                y = 130
-            } else if maxValue == value {
-                y = 0
-            } else {
-                y = constantChartViewHeight - (multiplier * value)
-            }
-            
-            
+            let y: CGFloat = i == 0 ? (constantChartViewHeight - (multiplier * value)) : nextY
+//            nextY = i == values.count - 1 ? y : values[i + 1]
             
 //            if i == 0 {
 //                nextY = y
@@ -53,8 +54,9 @@ class DetailAssetViewController: UIViewController {
 //                    let topPoint = CGPoint(x: view.frame.midX - 50, y: view.bounds.minY)
 //                    let bottomPoint = CGPoint(x: view.frame.midX, y: view.bounds.maxY)
             let topPoint = CGPoint(x: prevX, y: y)
-            
-            let bottomPoint = CGPoint(x: (view.frame.width / CGFloat(values.count)) * (CGFloat(i) + CGFloat(1)) , y: 0)
+            nextY = i == values.count - 1 ? y : (constantChartViewHeight - (multiplier * values[i + 1]))
+//            nextY = (multiplier * values[i + 1])
+            let bottomPoint = CGPoint(x: (view.frame.width / CGFloat(values.count)) * (CGFloat(i) + CGFloat(1)) , y: nextY)
 //            prevY = y
             let strokeLength = Int(view.frame.width) / values.count
             print(view.frame.width, strokeLength)
