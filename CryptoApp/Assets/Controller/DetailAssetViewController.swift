@@ -36,6 +36,11 @@ final class DetailAssetViewController: UIViewController {
     
     private func setupUI() {
         navigationItem.title = asset.name.orEmpty + " " + asset.symbol.orEmpty
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "heart"),
+                                                               style: .plain,
+                                                               target: self,
+                                                               action: #selector(watchListTapped))
         let topSeparator = createSeparator()
         let short1Separator = createSeparator()
         let short2Separator = createSeparator()
@@ -178,6 +183,25 @@ final class DetailAssetViewController: UIViewController {
         v.snp.makeConstraints { $0.height.equalTo(1) }
         v.backgroundColor = UIColor(hexString: "#C6C6C8")
         return v
+    }
+    
+    @objc private func watchListTapped() {
+        var assets = WatchListAssets.assets
+        assets.append(asset)
+        do {
+            // Create JSON Encoder
+            let encoder = JSONEncoder()
+
+            // Encode Note
+            let data = try encoder.encode(assets)
+
+            // Write/Set Data
+            UserDefaults.standard.set(data, forKey: "Assets")
+
+        } catch {
+            print("Unable to Encode Note (\(error))")
+        }
+//        UserDefaults.standard.set(assets, forKey: "Assets")
     }
     
 

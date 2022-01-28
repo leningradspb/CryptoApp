@@ -32,6 +32,8 @@
 		2693104727A406DF00ACA99D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693104627A406DF00ACA99D /* UIImage+Extension.swift */; };
 		2693104927A4117200ACA99D /* DetailAssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693104827A4117200ACA99D /* DetailAssetViewController.swift */; };
 		2693104B27A4409800ACA99D /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693104A27A4409800ACA99D /* HistoryModel.swift */; };
+		2693105027A4593C00ACA99D /* WatchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693104F27A4593C00ACA99D /* WatchListViewController.swift */; };
+		2693105227A45A7700ACA99D /* WatchListAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693105127A45A7700ACA99D /* WatchListAssets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		2693104627A406DF00ACA99D /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		2693104827A4117200ACA99D /* DetailAssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAssetViewController.swift; sourceTree = "<group>"; };
 		2693104A27A4409800ACA99D /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
+		2693104F27A4593C00ACA99D /* WatchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListViewController.swift; sourceTree = "<group>"; };
+		2693105127A45A7700ACA99D /* WatchListAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListAssets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				2693101127A3154500ACA99D /* TabBarVC.swift */,
 				2693102227A31E1800ACA99D /* LocalizationNames.swift */,
 				2693103F27A3FF6600ACA99D /* Assets */,
+				2693104C27A458FA00ACA99D /* WatchList */,
 				2693102027A31D4B00ACA99D /* Localizable.strings */,
 				2693100627A3141300ACA99D /* Assets.xcassets */,
 				2693100827A3141300ACA99D /* LaunchScreen.storyboard */,
@@ -169,6 +174,23 @@
 				2693104A27A4409800ACA99D /* HistoryModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2693104C27A458FA00ACA99D /* WatchList */ = {
+			isa = PBXGroup;
+			children = (
+				2693104D27A4591700ACA99D /* Controller */,
+				2693105127A45A7700ACA99D /* WatchListAssets.swift */,
+			);
+			path = WatchList;
+			sourceTree = "<group>";
+		};
+		2693104D27A4591700ACA99D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2693104F27A4593C00ACA99D /* WatchListViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +281,9 @@
 				2693103727A3DD2200ACA99D /* AssetCell.swift in Sources */,
 				2693103E27A3F2EE00ACA99D /* Double+Extension.swift in Sources */,
 				26930FFE27A3140900ACA99D /* AppDelegate.swift in Sources */,
+				2693105227A45A7700ACA99D /* WatchListAssets.swift in Sources */,
 				2693102F27A33CB400ACA99D /* APIManager.swift in Sources */,
+				2693105027A4593C00ACA99D /* WatchListViewController.swift in Sources */,
 				2693103527A342C200ACA99D /* AssetModel.swift in Sources */,
 				2693103327A3412100ACA99D /* UIWindow+Extension.swift in Sources */,
 				2693102327A31E1800ACA99D /* LocalizationNames.swift in Sources */,

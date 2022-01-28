@@ -27,10 +27,14 @@ final class AssetsViewController: UIViewController {
 //        }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     private func setupNavigationBar() {
         //        guard let navBar = navigationController?.navigationBar else { return }
         navigationItem.title = LocalizationNames.assets
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         searchController.obscuresBackgroundDuringPresentation = true
         navigationItem.searchController = searchController

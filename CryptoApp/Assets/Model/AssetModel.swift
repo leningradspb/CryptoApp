@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct AssetModel: Decodable {
+struct AssetModel: Codable {
     let data: [Asset]?
-    struct Asset: Decodable {
+    struct Asset: Codable {
         let id, symbol, name, rank, supply, maxSupply, marketCapUsd, volumeUsd24Hr, priceUsd, changePercent24Hr, vwap24Hr: String?
     }
 }
