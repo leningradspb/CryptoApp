@@ -20,6 +20,15 @@ extension Double {
     var stringWithoutTrailingZeros: String {
         return String(format: "%g", self)
     }
+    
+    func numberFormatted() -> String {
+        let formatter = NumberFormatter()
+        formatter.groupingSeparator = ","
+        formatter.numberStyle = .decimal
+        
+        let number = NSNumber(value: self)
+        return formatter.string(from: number)!
+    }
 }
     
  
