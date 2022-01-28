@@ -11,8 +11,24 @@ extension String {
     var localized: String { NSLocalizedString(self, comment: "") }
     
     var dollarRounded: String {
-        return "$\(Double(self)?.rounded(toPlaces: 2) ?? 0)"
+        return "$\(self.rounded)"
     }
     
+    var rounded: String {
+        return "\(Double(self)?.rounded(toPlaces: 2) ?? 0)"
+    }
     
+}
+
+extension Optional where Wrapped == String
+{
+    var orEmpty: String
+    {
+        switch self {
+        case .none:
+            return ""
+        case .some(let wrapped):
+            return wrapped
+        }
+    }
 }

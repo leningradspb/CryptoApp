@@ -12,6 +12,7 @@ final class AssetCell: UITableViewCell {
     private let symbolLabel = CustomLabel(color: .black, font: .systemFont(ofSize: 22))
     private let usdPriceLabel = CustomLabel(color: .secondaryGrey.withAlphaComponent(0.6), font: .systemFont(ofSize: 22))
     private let nameLabel = CustomLabel(color: .cryptoGrey.withAlphaComponent(0.6), font: .systemFont(ofSize: 13))
+    private let changePercent24HrLabel = PercentageLabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -27,13 +28,14 @@ final class AssetCell: UITableViewCell {
         symbolLabel.text = model.symbol
         nameLabel.text = model.name
         usdPriceLabel.text = model.priceUsd?.dollarRounded
+        changePercent24HrLabel.percentageText = model.changePercent24Hr?.rounded
     }
     
     private func setupUI() {
         backgroundColor = .white
         contentView.backgroundColor = .white
         selectionStyle = .none
-        contentView.addSubviews([assetImageView, symbolLabel, usdPriceLabel, nameLabel])
+        contentView.addSubviews([assetImageView, symbolLabel, usdPriceLabel, nameLabel, changePercent24HrLabel])
         
         assetImageView.layer.cornerRadius = 30
         assetImageView.clipsToBounds = true
@@ -60,7 +62,17 @@ final class AssetCell: UITableViewCell {
         nameLabel.snp.makeConstraints {
             $0.top.equalTo(symbolLabel.snp.bottom).offset(4)
             $0.leading.equalTo(assetImageView.snp.trailing).offset(15)
+//            $0.trailing.equalToSuperview().offset(-15)
+        }
+        
+        changePercent24HrLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
+        changePercent24HrLabel.snp.makeConstraints {
+            $0.top.equalTo(usdPriceLabel.snp.bottom).offset(7)
+            $0.leading.equalTo(nameLabel.snp.trailing).offset(6)
             $0.trailing.equalToSuperview().offset(-15)
         }
     }
+    
+   
 }

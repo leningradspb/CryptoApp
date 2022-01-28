@@ -29,3 +29,26 @@ final class CustomLabel: UILabel {
         super.init(coder: coder)
     }
 }
+
+final class PercentageLabel: UILabel {
+    var percentageText: String? {
+        didSet {
+            if percentageText?.first == "-" {
+                textColor = .cryptoRed
+                text = percentageText.orEmpty + "%"
+            } else {
+                textColor = .cryptoGreen
+                text = "+" + percentageText.orEmpty + "%"
+            }
+        }
+    }
+    
+    init() {
+        super.init(frame: .zero)
+        self.font = .systemFont(ofSize: 17)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+}

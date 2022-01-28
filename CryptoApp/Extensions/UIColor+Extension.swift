@@ -18,6 +18,12 @@ extension UIColor {
     
     /// #8E8E93
     static let cryptoGrey = UIColor(hexString: "#8E8E93")
+    
+    /// #FF3B30
+    static let cryptoRed = UIColor(hexString: "#FF3B30")
+    
+    /// #34C759
+    static let cryptoGreen = UIColor(hexString: "#34C759")
 }
 
 extension UIColor {
