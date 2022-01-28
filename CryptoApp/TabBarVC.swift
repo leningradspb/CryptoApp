@@ -37,8 +37,17 @@ final class TabBarVC: UITabBarController {
         watchListVC.tabBarItem.image = heartIcon
         watchListVC.tabBarItem.tag = 1
         
+        let settingsNC = UINavigationController()
+        let settingsVC = SettingsViewController()
+        settingsNC.viewControllers = [settingsVC]
+        
+        let settingIcon = UIImage(named: "gearshape.fill")
+        settingsVC.tabBarItem.title = LocalizationNames.settings
+        settingsVC.tabBarItem.image = settingIcon
+        settingsVC.tabBarItem.tag = 2
+        
         tabBar.backgroundColor = .white
-        tabBarList = [assetsNC, watchListNC]
+        tabBarList = [assetsNC, watchListNC, settingsNC]
         viewControllers = tabBarList
     }
 }

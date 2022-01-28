@@ -34,6 +34,7 @@
 		2693104B27A4409800ACA99D /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693104A27A4409800ACA99D /* HistoryModel.swift */; };
 		2693105027A4593C00ACA99D /* WatchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693104F27A4593C00ACA99D /* WatchListViewController.swift */; };
 		2693105227A45A7700ACA99D /* WatchListAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693105127A45A7700ACA99D /* WatchListAssets.swift */; };
+		2693105527A4675400ACA99D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693105427A4675400ACA99D /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		2693104A27A4409800ACA99D /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		2693104F27A4593C00ACA99D /* WatchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListViewController.swift; sourceTree = "<group>"; };
 		2693105127A45A7700ACA99D /* WatchListAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListAssets.swift; sourceTree = "<group>"; };
+		2693105427A4675400ACA99D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 		2693103F27A3FF6600ACA99D /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				2693105327A4674800ACA99D /* Settings */,
 				2693104027A3FF7D00ACA99D /* Controller */,
 				2693104127A3FF8400ACA99D /* Cell */,
 				2693104227A3FF8900ACA99D /* Model */,
@@ -191,6 +194,14 @@
 				2693104F27A4593C00ACA99D /* WatchListViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		2693105327A4674800ACA99D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2693105427A4675400ACA99D /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +299,7 @@
 				2693103327A3412100ACA99D /* UIWindow+Extension.swift in Sources */,
 				2693102327A31E1800ACA99D /* LocalizationNames.swift in Sources */,
 				2693101727A318AE00ACA99D /* Table+Extension.swift in Sources */,
+				2693105527A4675400ACA99D /* SettingsViewController.swift in Sources */,
 				2693103127A33E5900ACA99D /* APIConstants.swift in Sources */,
 				2693104B27A4409800ACA99D /* HistoryModel.swift in Sources */,
 				2693104927A4117200ACA99D /* DetailAssetViewController.swift in Sources */,
