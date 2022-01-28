@@ -38,6 +38,9 @@ final class AssetsViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         searchController.obscuresBackgroundDuringPresentation = true
         navigationItem.searchController = searchController
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        definesPresentationContext = true
     }
     
     private func setupTableView() {
@@ -118,4 +121,11 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
             loadAssets()
         }
     }
+}
+
+
+extension AssetsViewController: UISearchControllerDelegate, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        print(searchController.searchBar.text)
+      }
 }
