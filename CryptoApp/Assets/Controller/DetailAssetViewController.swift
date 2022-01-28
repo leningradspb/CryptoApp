@@ -10,10 +10,9 @@ import UIKit
 class DetailAssetViewController: UIViewController {
     private let chartView = UIView()
     let price = [7672, 8058, 8232, 6987]
-    let xs: [CGFloat] = [0, 100, 150, 200]
-    let ys: [CGFloat] = [0, 30, 100, 90]
-    let xsEnd = [100, 150, 200, 300]
-    let ysEnd: [CGFloat] = [30, 100, 90, -190]
+    let xs: [CGFloat] = [5, 10, 15]
+    private var prevX: CGFloat = 0
+    private var prevY: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +28,11 @@ class DetailAssetViewController: UIViewController {
         for i in 0..<xs.count {
 //                    let topPoint = CGPoint(x: view.frame.midX - 50, y: view.bounds.minY)
 //                    let bottomPoint = CGPoint(x: view.frame.midX, y: view.bounds.maxY)
-            let topPoint = CGPoint(x: xs[i], y: ys[i])
+            let topPoint = CGPoint(x: xs[i], y: 0)
             
-            let bottomPoint = CGPoint(x: (chartView.frame.width / CGFloat(xs.count)) * (CGFloat(i) + CGFloat(1)) , y: ysEnd[i])
-            let  strokeLength = Int(chartView.frame.width) / xs.count
+            let bottomPoint = CGPoint(x: (view.frame.width / CGFloat(xs.count)) * (CGFloat(i) + CGFloat(1)) , y: 0)
+            let strokeLength = Int(view.frame.width) / xs.count
+            print(view.frame.width, strokeLength)
             chartView.createDashedLine(from: topPoint, to: bottomPoint, color: .black, strokeLength: NSNumber(integerLiteral: strokeLength), gapLength: 0, width: 2)
         }
 //        let topPoint = CGPoint(x: view.frame.midX, y: view.bounds.minY)
