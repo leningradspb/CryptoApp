@@ -22,13 +22,13 @@ final class SettingsViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .cryptoNavigationGrey
         setupTableView()
     }
     
     private func setupTableView() {
         view.addSubview(tableView)
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .cryptoNavigationGrey
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }

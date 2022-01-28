@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
             let tabBarAppearance = UITabBarAppearance()
             tabBarAppearance.configureWithTransparentBackground()
-            tabBarAppearance.backgroundColor = UIColor.white
+            tabBarAppearance.backgroundColor = .cryptoNavigationGrey
             
             tabBarAppearance.stackedLayoutAppearance.normal.iconColor = UIColor.systemGray
             tabBarAppearance.stackedLayoutAppearance.selected.iconColor =  .cryptoBlue

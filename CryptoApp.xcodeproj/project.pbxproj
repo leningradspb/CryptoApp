@@ -110,6 +110,7 @@
 				2693102227A31E1800ACA99D /* LocalizationNames.swift */,
 				2693103F27A3FF6600ACA99D /* Assets */,
 				2693104C27A458FA00ACA99D /* WatchList */,
+				2693105327A4674800ACA99D /* Settings */,
 				2693102027A31D4B00ACA99D /* Localizable.strings */,
 				2693100627A3141300ACA99D /* Assets.xcassets */,
 				2693100827A3141300ACA99D /* LaunchScreen.storyboard */,
@@ -145,7 +146,6 @@
 		2693103F27A3FF6600ACA99D /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				2693105327A4674800ACA99D /* Settings */,
 				2693104027A3FF7D00ACA99D /* Controller */,
 				2693104127A3FF8400ACA99D /* Cell */,
 				2693104227A3FF8900ACA99D /* Model */,
