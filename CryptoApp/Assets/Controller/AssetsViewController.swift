@@ -57,7 +57,7 @@ final class AssetsViewController: UIViewController {
     private func loadAssets() {
         let request = CustomRequest("assets/?limit=10", params: ["offset": offset])
         APIManager.shared.makeRequest(request, responseType: AssetModel.self) { [weak self] result in
-            print(result)
+//            print(result)
             self?.refreshControl.endRefreshing()
             guard let self = self, let assets = result.data else { return }
 //            if assets.isEmpty {
@@ -98,6 +98,14 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         80.5
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row < assets.count {
+            let asset = assets[indexPath.row]
+            let vc = DetailAssetViewController(asset: asset)
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

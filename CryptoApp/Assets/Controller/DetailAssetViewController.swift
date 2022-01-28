@@ -7,13 +7,24 @@
 
 import UIKit
 
-class DetailAssetViewController: UIViewController {
+final class DetailAssetViewController: UIViewController {
     private let chartView = UIView()
     let price = [7672, 8058, 8232, 6987]
     let values: [CGFloat] = [10, 8, 2, 20]
     private var prevX: CGFloat = 0
     private var prevY: CGFloat = 0
     private let constantChartViewHeight: CGFloat = 130
+//    private var history: [HistoryModel.Asset] = []
+    
+    private let asset: AssetModel.Asset
+    init(asset: AssetModel.Asset) {
+        self.asset = asset
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,54 +37,8 @@ class DetailAssetViewController: UIViewController {
             $0.trailing.equalToSuperview()
             $0.height.equalTo(constantChartViewHeight)
         }
+        loadHistory()
         
-        let minValue = values.min()!
-        let maxValue = values.max()!
-        
-        for i in 0..<values.count {
-            let value = values[i]
-            let isFirst = i == 0
-            let isMinValue = value == minValue
-//            let isMaxValue = value == maxValue
-            
-            let multiplier = constantChartViewHeight / maxValue
-            
-//            var y: CGFloat = 0
-//
-//            if minValue == value {
-//                y = 130
-//            } else if maxValue == value {
-//                y = 0
-//            } else {
-//                y = constantChartViewHeight - (multiplier * value)
-//            }
-            
-            var y: CGFloat
-            if isMinValue {
-                y = 130
-            }  else {
-                y = (constantChartViewHeight - (multiplier * value))
-            }
-             
-            
-            
-//            nextY = i == values.count - 1 ? y : values[i + 1]
-            
-//            if i == 0 {
-//                nextY = y
-//            }
-//                    let topPoint = CGPoint(x: view.frame.midX - 50, y: view.bounds.minY)
-//                    let bottomPoint = CGPoint(x: view.frame.midX, y: view.bounds.maxY)
-            let topPoint = CGPoint(x: prevX, y: prevY)
-            prevY = y
-//            nextY = (multiplier * values[i + 1])
-            let bottomPoint = CGPoint(x: (view.frame.width / CGFloat(values.count - 1)) * (CGFloat(i)) , y: y)
-//            prevY = y
-            let strokeLength = isFirst ? 0: Int(view.frame.width) / (values.count - 1)
-            print(view.frame.width, strokeLength)
-            prevX += CGFloat(strokeLength)
-            chartView.createDashedLine(from: topPoint, to: bottomPoint, color: .black, strokeLength: NSNumber(integerLiteral: strokeLength), gapLength: 0, width: 2)
-        }
 //        let topPoint = CGPoint(x: view.frame.midX, y: view.bounds.minY)
 //        let bottomPoint = CGPoint(x: view.frame.midX, y: view.bounds.maxY)
 //
@@ -81,6 +46,59 @@ class DetailAssetViewController: UIViewController {
     }
     
 
+    private func loadHistory() {
+        guard let id = asset.id else {return}
+        let request = CustomRequest("assets/\(id)/history?interval=m5")
+        APIManager.shared.makeRequest(request, responseType: HistoryModel.self) { [weak self]  response in
+            guard let self = self else { return }
+            print(response.data)
+            if let history = response.data {
+                var floatHistory: [CGFloat] = []
+                history.forEach {
+                    if let double = Double($0.priceUsd.orEmpty) {
+                        floatHistory.append(CGFloat(double))
+                    }
+                }
+                print(floatHistory)
+                self.createChart(values: floatHistory)
+//                self.history = history
+            }
+        } failure: {
+            print("FAIL")
+        }
+
+    }
+    
+    
+    private func createChart(values: [CGFloat]) {
+        let minValue = values.min()!
+        let maxValue = values.max()!
+        
+        for i in 0..<values.count {
+            let value = values[i]
+            let isFirst = i == 0
+            let isMinValue = value == minValue
+
+            let multiplier = constantChartViewHeight / maxValue
+            
+            var y: CGFloat
+            if isMinValue {
+                y = 130
+            }  else {
+                y = (constantChartViewHeight - (multiplier * value))
+            }
+
+            let topPoint = CGPoint(x: prevX, y: prevY)
+            prevY = y
+
+            let bottomPoint = CGPoint(x: (view.frame.width / CGFloat(values.count - 1)) * (CGFloat(i)) , y: y)
+
+            let strokeLength = isFirst ? 0: Int(view.frame.width) / (values.count - 1)
+            print(view.frame.width, strokeLength)
+            prevX += CGFloat(strokeLength)
+            chartView.createDashedLine(from: topPoint, to: bottomPoint, color: .black, strokeLength: NSNumber(integerLiteral: strokeLength), gapLength: 0, width: 2)
+        }
+    }
     
 
 }

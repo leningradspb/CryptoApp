@@ -31,6 +31,7 @@
 		2693104527A406A500ACA99D /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 2693104427A406A500ACA99D /* Nuke */; };
 		2693104727A406DF00ACA99D /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693104627A406DF00ACA99D /* UIImage+Extension.swift */; };
 		2693104927A4117200ACA99D /* DetailAssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693104827A4117200ACA99D /* DetailAssetViewController.swift */; };
+		2693104B27A4409800ACA99D /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693104A27A4409800ACA99D /* HistoryModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		2693103D27A3F2EE00ACA99D /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		2693104627A406DF00ACA99D /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		2693104827A4117200ACA99D /* DetailAssetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAssetViewController.swift; sourceTree = "<group>"; };
+		2693104A27A4409800ACA99D /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				2693103427A342C200ACA99D /* AssetModel.swift */,
+				2693104A27A4409800ACA99D /* HistoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				2693102327A31E1800ACA99D /* LocalizationNames.swift in Sources */,
 				2693101727A318AE00ACA99D /* Table+Extension.swift in Sources */,
 				2693103127A33E5900ACA99D /* APIConstants.swift in Sources */,
+				2693104B27A4409800ACA99D /* HistoryModel.swift in Sources */,
 				2693104927A4117200ACA99D /* DetailAssetViewController.swift in Sources */,
 				2693104727A406DF00ACA99D /* UIImage+Extension.swift in Sources */,
 				2693101227A3154500ACA99D /* TabBarVC.swift in Sources */,
