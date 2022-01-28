@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.swift
+//  DetailSettingsViewController.swift
 //  CryptoApp
 //
 //  Created by Eduard Sinyakov on 28.01.2022.
@@ -7,8 +7,9 @@
 
 import UIKit
 
-final class SettingsViewController: UIViewController {
+final class DetailSettingsViewController: UIViewController {
     private let tableView = UITableView(frame: .zero, style: .grouped)
+    private let icons = [LocalizationNames.white, LocalizationNames.black, LocalizationNames.yellow]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +19,7 @@ final class SettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
+        
     }
     
     private func setupUI() {
@@ -39,34 +40,31 @@ final class SettingsViewController: UIViewController {
 
         tableView.showsVerticalScrollIndicator = false
         
-        tableView.register(SettingsCell.self, forCellReuseIdentifier: SettingsCell.identifier)
+        tableView.register(DetailSettingsCell.self, forCellReuseIdentifier: DetailSettingsCell.identifier)
     }
 
     private func setupNavigationBar() {
         //        guard let navBar = navigationController?.navigationBar else { return }
-        navigationItem.title = LocalizationNames.settings
-        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.title = LocalizationNames.icon
+//        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
 }
 
-extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+extension DetailSettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        icons.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SettingsCell.identifier, for: indexPath) as! SettingsCell
-        cell.update(blackText: LocalizationNames.icon, greyText: "Black")
+        let cell = tableView.dequeueReusableCell(withIdentifier: DetailSettingsCell.identifier, for: indexPath) as! DetailSettingsCell
+        cell.update(blackText: LocalizationNames.icon, greyText: LocalizationNames.black)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         44
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailSettingsViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
 }
+

@@ -36,6 +36,8 @@
 		2693105227A45A7700ACA99D /* WatchListAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693105127A45A7700ACA99D /* WatchListAssets.swift */; };
 		2693105527A4675400ACA99D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693105427A4675400ACA99D /* SettingsViewController.swift */; };
 		2693105927A473D900ACA99D /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693105827A473D900ACA99D /* SettingsCell.swift */; };
+		2693105C27A4774500ACA99D /* DetailSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693105B27A4774500ACA99D /* DetailSettingsViewController.swift */; };
+		2693105E27A4779300ACA99D /* DetailSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693105D27A4779300ACA99D /* DetailSettingsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,8 @@
 		2693105127A45A7700ACA99D /* WatchListAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListAssets.swift; sourceTree = "<group>"; };
 		2693105427A4675400ACA99D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2693105827A473D900ACA99D /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		2693105B27A4774500ACA99D /* DetailSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSettingsViewController.swift; sourceTree = "<group>"; };
+		2693105D27A4779300ACA99D /* DetailSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSettingsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				2693105427A4675400ACA99D /* SettingsViewController.swift */,
+				2693105B27A4774500ACA99D /* DetailSettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				2693105827A473D900ACA99D /* SettingsCell.swift */,
+				2693105D27A4779300ACA99D /* DetailSettingsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -323,12 +329,14 @@
 				2693105227A45A7700ACA99D /* WatchListAssets.swift in Sources */,
 				2693102F27A33CB400ACA99D /* APIManager.swift in Sources */,
 				2693105027A4593C00ACA99D /* WatchListViewController.swift in Sources */,
+				2693105E27A4779300ACA99D /* DetailSettingsCell.swift in Sources */,
 				2693103527A342C200ACA99D /* AssetModel.swift in Sources */,
 				2693103327A3412100ACA99D /* UIWindow+Extension.swift in Sources */,
 				2693102327A31E1800ACA99D /* LocalizationNames.swift in Sources */,
 				2693101727A318AE00ACA99D /* Table+Extension.swift in Sources */,
 				2693105527A4675400ACA99D /* SettingsViewController.swift in Sources */,
 				2693103127A33E5900ACA99D /* APIConstants.swift in Sources */,
+				2693105C27A4774500ACA99D /* DetailSettingsViewController.swift in Sources */,
 				2693104B27A4409800ACA99D /* HistoryModel.swift in Sources */,
 				2693104927A4117200ACA99D /* DetailAssetViewController.swift in Sources */,
 				2693104727A406DF00ACA99D /* UIImage+Extension.swift in Sources */,
