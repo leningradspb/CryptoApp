@@ -35,6 +35,7 @@
 		2693105027A4593C00ACA99D /* WatchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693104F27A4593C00ACA99D /* WatchListViewController.swift */; };
 		2693105227A45A7700ACA99D /* WatchListAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693105127A45A7700ACA99D /* WatchListAssets.swift */; };
 		2693105527A4675400ACA99D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693105427A4675400ACA99D /* SettingsViewController.swift */; };
+		2693105927A473D900ACA99D /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693105827A473D900ACA99D /* SettingsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		2693104F27A4593C00ACA99D /* WatchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListViewController.swift; sourceTree = "<group>"; };
 		2693105127A45A7700ACA99D /* WatchListAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListAssets.swift; sourceTree = "<group>"; };
 		2693105427A4675400ACA99D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2693105827A473D900ACA99D /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				2693104D27A4591700ACA99D /* Controller */,
-				2693105127A45A7700ACA99D /* WatchListAssets.swift */,
+				2693105A27A4740800ACA99D /* Model */,
 			);
 			path = WatchList;
 			sourceTree = "<group>";
@@ -199,9 +201,34 @@
 		2693105327A4674800ACA99D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				2693105427A4675400ACA99D /* SettingsViewController.swift */,
+				2693105627A473A400ACA99D /* Controller */,
+				2693105727A473AB00ACA99D /* View */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		2693105627A473A400ACA99D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2693105427A4675400ACA99D /* SettingsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2693105727A473AB00ACA99D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2693105827A473D900ACA99D /* SettingsCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2693105A27A4740800ACA99D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2693105127A45A7700ACA99D /* WatchListAssets.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2693105927A473D900ACA99D /* SettingsCell.swift in Sources */,
 				2693103A27A3E1A100ACA99D /* CustomControls.swift in Sources */,
 				2693102527A31EFA00ACA99D /* String+Extension.swift in Sources */,
 				2693100227A3140900ACA99D /* AssetsViewController.swift in Sources */,

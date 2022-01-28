@@ -33,11 +33,13 @@ final class SettingsViewController: UIViewController {
             $0.edges.equalToSuperview()
         }
         
-//        tableView.separatorInset.left = 90
-//        tableView.delegate = self
-//        tableView.dataSource = self
+        tableView.separatorInset.left = 16
+        tableView.delegate = self
+        tableView.dataSource = self
 
         tableView.showsVerticalScrollIndicator = false
+        
+        tableView.register(SettingsCell.self, forCellReuseIdentifier: SettingsCell.identifier)
     }
 
     private func setupNavigationBar() {
@@ -46,4 +48,20 @@ final class SettingsViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
     }
 
+}
+
+extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingsCell.identifier, for: indexPath) as! SettingsCell
+        cell.update(blackText: "Icon", greyText: "Black")
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        44
+    }
 }
