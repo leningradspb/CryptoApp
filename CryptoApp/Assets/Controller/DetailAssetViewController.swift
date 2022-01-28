@@ -32,16 +32,19 @@ final class DetailAssetViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         loadHistory()
-        
-//        let topPoint = CGPoint(x: view.frame.midX, y: view.bounds.minY)
-//        let bottomPoint = CGPoint(x: view.frame.midX, y: view.bounds.maxY)
-//
-//        view.createDashedLine(from: topPoint, to: bottomPoint, color: .black, strokeLength: 14, gapLength: 6, width: 2)
     }
     
     private func setupUI() {
         navigationItem.title = asset.name.orEmpty + " " + asset.symbol.orEmpty
-        view.addSubviews([usdPriceLabel, changePercent24HrLabel, chartView])
+        let topSeparator = createSeparator()
+        let short1Separator = createSeparator()
+        let short2Separator = createSeparator()
+        let bottomSeparator = createSeparator()
+        let marketCap = DetailAssetInfoView(blackText: "Market Cap", greyText: asset.marketCapUsd)
+        let supply = DetailAssetInfoView(blackText: "Supply", greyText: asset.supply)
+        let volume = DetailAssetInfoView(blackText: "Volume (24h)", greyText: asset.volumeUsd24Hr)
+        
+        view.addSubviews([usdPriceLabel, changePercent24HrLabel, chartView, topSeparator, marketCap, short1Separator, supply, short2Separator, volume, bottomSeparator])
         view.backgroundColor = UIColor(hexString: "#F9F9F9")
         
         usdPriceLabel.text = asset.priceUsd?.dollarRounded
@@ -53,7 +56,7 @@ final class DetailAssetViewController: UIViewController {
             $0.trailing.equalToSuperview().offset(-6)
         }
         
-        changePercent24HrLabel.percentageText = asset.changePercent24Hr
+        changePercent24HrLabel.percentageText = asset.changePercent24Hr?.rounded
         changePercent24HrLabel.textAlignment = .center
         changePercent24HrLabel.font = .systemFont(ofSize: 22)
         
@@ -69,6 +72,48 @@ final class DetailAssetViewController: UIViewController {
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
             $0.height.equalTo(constantChartViewHeight)
+        }
+        
+        topSeparator.snp.makeConstraints {
+            $0.top.equalTo(chartView.snp.bottom).offset(28)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+        }
+        
+        marketCap.snp.makeConstraints {
+            $0.top.equalTo(topSeparator.snp.bottom)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+        }
+        
+        short1Separator.snp.makeConstraints {
+            $0.top.equalTo(marketCap.snp.bottom)
+            $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview()
+        }
+        
+        supply.snp.makeConstraints {
+            $0.top.equalTo(short1Separator.snp.bottom)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+        }
+        
+        short2Separator.snp.makeConstraints {
+            $0.top.equalTo(supply.snp.bottom)
+            $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview()
+        }
+        
+        volume.snp.makeConstraints {
+            $0.top.equalTo(short2Separator.snp.bottom)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+        }
+        
+        bottomSeparator.snp.makeConstraints {
+            $0.top.equalTo(volume.snp.bottom)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
         }
     }
     
@@ -126,6 +171,13 @@ final class DetailAssetViewController: UIViewController {
             prevX += CGFloat(strokeLength)
             chartView.createDashedLine(from: topPoint, to: bottomPoint, color: .black, strokeLength: NSNumber(integerLiteral: strokeLength), gapLength: 0, width: 2)
         }
+    }
+    
+    private func createSeparator() -> UIView {
+        let v = UIView()
+        v.snp.makeConstraints { $0.height.equalTo(1) }
+        v.backgroundColor = UIColor(hexString: "#C6C6C8")
+        return v
     }
     
 

@@ -52,3 +52,36 @@ final class PercentageLabel: UILabel {
         super.init(coder: coder)
     }
 }
+
+final class DetailAssetInfoView: UIView {
+    private let black = CustomLabel(color: .black, font: .systemFont(ofSize: 17))
+    private let grey = CustomLabel(color: .secondaryGrey, font: .systemFont(ofSize: 17))
+    
+    init(blackText: String?, greyText: String?) {
+        super.init(frame: .zero)
+        
+        addSubviews([black, grey])
+        black.text = blackText
+        
+        grey.textAlignment = .right
+        grey.text = "$\(greyText.orEmpty.replace(string: ".", replacement: ","))"
+        grey.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
+        black.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(10)
+            $0.leading.equalToSuperview().offset(16)
+            $0.bottom.equalToSuperview().offset(-10)
+        }
+        
+        grey.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(10)
+            $0.leading.equalTo(black.snp.trailing).offset(6)
+            $0.bottom.equalToSuperview().offset(-10)
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
