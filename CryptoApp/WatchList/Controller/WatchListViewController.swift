@@ -9,6 +9,7 @@ import UIKit
 
 final class WatchListViewController: UIViewController {
     private let tableView = UITableView(frame: .zero, style: .grouped)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,6 +17,10 @@ final class WatchListViewController: UIViewController {
         setupNavigationBar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
 
     private func setupNavigationBar() {
         navigationItem.title = LocalizationNames.watchlist

@@ -11,11 +11,16 @@ final class DetailAssetViewController: UIViewController {
     private let usdPriceLabel = CustomLabel(color: .secondaryGrey.withAlphaComponent(0.6), font: .systemFont(ofSize: 64, weight: .thin))
     private let changePercent24HrLabel = PercentageLabel()
     private let chartView = UIView()
+    private let heartButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
     let price = [7672, 8058, 8232, 6987]
     let values: [CGFloat] = [10, 8, 2, 20]
     private var prevX: CGFloat = 0
     private var prevY: CGFloat = 0
     private let constantChartViewHeight: CGFloat = 130
+    
+    private var isInWatchList: Bool {
+        WatchListAssets.assets.contains(where: {$0.id == asset.id})
+    }
 //    private var history: [HistoryModel.Asset] = []
     
     private let asset: AssetModel.Asset
@@ -37,10 +42,19 @@ final class DetailAssetViewController: UIViewController {
     private func setupUI() {
         navigationItem.title = asset.name.orEmpty + " " + asset.symbol.orEmpty
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "heart"),
-                                                               style: .plain,
-                                                               target: self,
-                                                               action: #selector(watchListTapped))
+        
+        heartButton.isSelected = isInWatchList
+        heartButton.addTarget(self, action: #selector(watchListTapped), for: .touchUpInside)
+        heartButton.setImage(UIImage(named: "heart"), for: .normal)
+        heartButton.setImage(UIImage(named: "heart.fill"), for: .selected)
+        let rightButton = UIBarButtonItem(customView: heartButton)
+        
+        navigationItem.rightBarButtonItem = rightButton
+        
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: isInWatchList ? "heart.fill" : "heart"),
+//                                                               style: .plain,
+//                                                               target: self,
+//                                                               action: #selector(watchListTapped))
         let topSeparator = createSeparator()
         let short1Separator = createSeparator()
         let short2Separator = createSeparator()
@@ -187,7 +201,13 @@ final class DetailAssetViewController: UIViewController {
     
     @objc private func watchListTapped() {
         var assets = WatchListAssets.assets
-        assets.append(asset)
+        
+        if isInWatchList {
+            assets.removeAll(where: {$0.id == asset.id})
+        } else {
+            assets.append(asset)
+        }
+        
         do {
             // Create JSON Encoder
             let encoder = JSONEncoder()
@@ -196,11 +216,18 @@ final class DetailAssetViewController: UIViewController {
             let data = try encoder.encode(assets)
 
             // Write/Set Data
+            heartButton.isSelected = !heartButton.isSelected
             UserDefaults.standard.set(data, forKey: "Assets")
 
         } catch {
             print("Unable to Encode Note (\(error))")
         }
+        
+        
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: isInWatchList ? "heart.fill" : "heart"),
+//                                                               style: .plain,
+//                                                               target: self,
+//                                                               action: #selector(watchListTapped))
 //        UserDefaults.standard.set(assets, forKey: "Assets")
     }
     
