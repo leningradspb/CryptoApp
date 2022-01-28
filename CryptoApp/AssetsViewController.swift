@@ -18,6 +18,9 @@ final class AssetsViewController: UIViewController {
         APIManager.shared.makeRequest(request, responseType: AssetModel.self) { [weak self] result in
             print(result)
         }
+//        ApiService.shared.getProfileStatus { profileStatus, error in
+//            print(profileStatus, error)
+//        }
     }
     
     private func setupNavigationBar() {

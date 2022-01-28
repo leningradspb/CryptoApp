@@ -13,10 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let tabBar = TabBarVC()
-        self.window?.rootViewController = tabBar
-        self.window?.makeKeyAndVisible()
         
         if #available(iOS 13.0, *) {
             let tabBarAppearance = UITabBarAppearance()
@@ -42,6 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
             }
         } else {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let tabBar = TabBarVC()
+            self.window?.rootViewController = tabBar
+            self.window?.makeKeyAndVisible()
             UITabBar.appearance().backgroundColor = UIColor.white
             UITabBar.appearance().tintColor = .cryptoBlue
             UINavigationBar.appearance().isTranslucent = false
