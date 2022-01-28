@@ -12,7 +12,7 @@ class DetailAssetViewController: UIViewController {
     let price = [7672, 8058, 8232, 6987]
     let values: [CGFloat] = [10, 8, 2, 20]
     private var prevX: CGFloat = 0
-    private var nextY: CGFloat = 0
+    private var prevY: CGFloat = 0
     private let constantChartViewHeight: CGFloat = 130
     
     override func viewDidLoad() {
@@ -32,6 +32,9 @@ class DetailAssetViewController: UIViewController {
         
         for i in 0..<values.count {
             let value = values[i]
+            let isFirst = i == 0
+            let isMinValue = value == minValue
+//            let isMaxValue = value == maxValue
             
             let multiplier = constantChartViewHeight / maxValue
             
@@ -45,7 +48,13 @@ class DetailAssetViewController: UIViewController {
 //                y = constantChartViewHeight - (multiplier * value)
 //            }
             
-            var y: CGFloat = i == 0 ? (constantChartViewHeight - (multiplier * value)) : nextY
+            var y: CGFloat
+            if isMinValue {
+                y = 130
+            }  else {
+                y = (constantChartViewHeight - (multiplier * value))
+            }
+             
             
             
 //            nextY = i == values.count - 1 ? y : values[i + 1]
@@ -55,12 +64,12 @@ class DetailAssetViewController: UIViewController {
 //            }
 //                    let topPoint = CGPoint(x: view.frame.midX - 50, y: view.bounds.minY)
 //                    let bottomPoint = CGPoint(x: view.frame.midX, y: view.bounds.maxY)
-            let topPoint = CGPoint(x: prevX, y: y)
-            nextY = i == 0 ? y : (constantChartViewHeight - (multiplier * values[i]))
+            let topPoint = CGPoint(x: prevX, y: prevY)
+            prevY = y
 //            nextY = (multiplier * values[i + 1])
-            let bottomPoint = CGPoint(x: (view.frame.width / CGFloat(values.count - 1)) * (CGFloat(i)) , y: nextY)
+            let bottomPoint = CGPoint(x: (view.frame.width / CGFloat(values.count - 1)) * (CGFloat(i)) , y: y)
 //            prevY = y
-            let strokeLength = i == 0 ? 0: Int(view.frame.width) / (values.count - 1)
+            let strokeLength = isFirst ? 0: Int(view.frame.width) / (values.count - 1)
             print(view.frame.width, strokeLength)
             prevX += CGFloat(strokeLength)
             chartView.createDashedLine(from: topPoint, to: bottomPoint, color: .black, strokeLength: NSNumber(integerLiteral: strokeLength), gapLength: 0, width: 2)
