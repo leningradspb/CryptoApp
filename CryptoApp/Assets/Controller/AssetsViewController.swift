@@ -91,7 +91,7 @@ extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: AssetCell.identifier, for: indexPath) as! AssetCell
         if indexPath.row < assets.count {
             let asset = assets[indexPath.row]
-            cell.update(with: asset )
+            cell.update(with: asset)
         }
         return cell
     }

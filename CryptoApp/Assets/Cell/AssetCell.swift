@@ -30,6 +30,11 @@ final class AssetCell: UITableViewCell {
         nameLabel.text = model.name
         usdPriceLabel.text = model.priceUsd?.dollarRounded
         changePercent24HrLabel.percentageText = model.changePercent24Hr?.rounded
+        
+        if let symbol = model.symbol?.lowercased() {
+            let imageURL = "https://cryptoicons.org/api/icon/\(symbol)/200"
+            assetImageView.setImageURL(path: imageURL, placeholder: nil)
+        }
     }
     
     private func setupUI() {
@@ -40,7 +45,7 @@ final class AssetCell: UITableViewCell {
         
         assetImageView.layer.cornerRadius = 30
         assetImageView.clipsToBounds = true
-        assetImageView.backgroundColor = .blue
+//        assetImageView.backgroundColor = .blue
         
         assetImageView.snp.makeConstraints {
             $0.width.height.equalTo(60)
