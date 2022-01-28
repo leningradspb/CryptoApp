@@ -9,8 +9,9 @@ import UIKit
 import SnapKit
 
 final class AssetsViewController: UIViewController {
-    let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = UISearchController(searchResultsController: nil)
     private let tableView = UITableView(frame: .zero, style: .grouped)
+    private var assets: [AssetModel.Asset] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +21,12 @@ final class AssetsViewController: UIViewController {
         let request = CustomRequest("assets/?limit=10", params: ["offset":0])
         APIManager.shared.makeRequest(request, responseType: AssetModel.self) { [weak self] result in
             print(result)
+            guard let self = self, let assets = result.data else { return }
+            self.assets = assets
+            self.tableView.reloadData()
         }
 //        ApiService.shared.getProfileStatus { profileStatus, error in
-//            print(profileStatus, error)
+//            print("!!!!@!!@!@!@ \n\n\n", profileStatus, error)
 //        }
     }
     
@@ -54,12 +58,19 @@ final class AssetsViewController: UIViewController {
 
 extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return assets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AssetCell.identifier, for: indexPath) as! AssetCell
-        cell.update(text: "\(indexPath.row)")
+        if indexPath.row < assets.count {
+            let asset = assets[indexPath.row]
+            cell.update(with: asset )
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        80.5
     }
 }

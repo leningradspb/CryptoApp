@@ -11,7 +11,13 @@ extension UIColor {
     /// #007AFF
     static let cryptoBlue = UIColor(hexString: "#007AFF")
     
-    static let cryptoNavigationGrey = UIColor(hexString: "#F2F2F2") 
+    static let cryptoNavigationGrey = UIColor(hexString: "#F2F2F2")
+    
+    /// #3C3C43
+    static let secondaryGrey = UIColor(hexString: "#3C3C43")
+    
+    /// #8E8E93
+    static let cryptoGrey = UIColor(hexString: "#8E8E93")
 }
 
 extension UIColor {

@@ -9,4 +9,10 @@ import Foundation
 
 extension String {
     var localized: String { NSLocalizedString(self, comment: "") }
+    
+    var dollarRounded: String {
+        return "$\(Double(self)?.rounded(toPlaces: 2) ?? 0)"
+    }
+    
+    
 }
