@@ -24,6 +24,7 @@
 		2693103127A33E5900ACA99D /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693103027A33E5900ACA99D /* APIConstants.swift */; };
 		2693103327A3412100ACA99D /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693103227A3412100ACA99D /* UIWindow+Extension.swift */; };
 		2693103527A342C200ACA99D /* AssetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693103427A342C200ACA99D /* AssetModel.swift */; };
+		2693103727A3DD2200ACA99D /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693103627A3DD2200ACA99D /* AssetCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		2693103027A33E5900ACA99D /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		2693103227A3412100ACA99D /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
 		2693103427A342C200ACA99D /* AssetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetModel.swift; sourceTree = "<group>"; };
+		2693103627A3DD2200ACA99D /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				2693101127A3154500ACA99D /* TabBarVC.swift */,
 				2693102227A31E1800ACA99D /* LocalizationNames.swift */,
 				2693100127A3140900ACA99D /* AssetsViewController.swift */,
+				2693103627A3DD2200ACA99D /* AssetCell.swift */,
 				2693103427A342C200ACA99D /* AssetModel.swift */,
 				2693102027A31D4B00ACA99D /* Localizable.strings */,
 				2693100627A3141300ACA99D /* Assets.xcassets */,
@@ -190,6 +193,7 @@
 			files = (
 				2693102527A31EFA00ACA99D /* String+Extension.swift in Sources */,
 				2693100227A3140900ACA99D /* AssetsViewController.swift in Sources */,
+				2693103727A3DD2200ACA99D /* AssetCell.swift in Sources */,
 				26930FFE27A3140900ACA99D /* AppDelegate.swift in Sources */,
 				2693102F27A33CB400ACA99D /* APIManager.swift in Sources */,
 				2693103527A342C200ACA99D /* AssetModel.swift in Sources */,

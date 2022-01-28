@@ -6,15 +6,18 @@
 //
 
 import UIKit
+import SnapKit
 
 final class AssetsViewController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
+    private let tableView = UITableView(frame: .zero, style: .grouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
         setupNavigationBar()
-        let request = CustomRequest("assets/?limit=10")
+        setupTableView()
+        let request = CustomRequest("assets/?limit=10", params: ["offset":0])
         APIManager.shared.makeRequest(request, responseType: AssetModel.self) { [weak self] result in
             print(result)
         }
@@ -31,7 +34,32 @@ final class AssetsViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = true
         navigationItem.searchController = searchController
     }
+    
+    private func setupTableView() {
+        view.addSubview(tableView)
+        tableView.backgroundColor = .white
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        tableView.separatorInset.left = 90
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(AssetCell.self, forCellReuseIdentifier: AssetCell.identifier)
+    }
 
 
 }
 
+extension AssetsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: AssetCell.identifier, for: indexPath) as! AssetCell
+        cell.update(text: "\(indexPath.row)")
+        return cell
+    }
+}
