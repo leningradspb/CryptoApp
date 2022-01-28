@@ -12,11 +12,12 @@ final class APIManager
 {
     static let shared = APIManager()
     
-    func makeRequest<T: Decodable>(_ request: GorodAPIBaseRequest, responseType: T.Type, completion: @escaping (T)->Void) {
+    func makeRequest<T: Decodable>(_ request: GorodAPIBaseRequest, responseType: T.Type, completion: @escaping (T)->Void, failure: @escaping ()->Void) {
         makeAlamofireRequest(request).responseJSON { (dataResponse) in
             do {
                 guard let data = dataResponse.data else {
                     self.displayError(title: LocalizationNames.error, message: dataResponse.error?.errorDescription)
+                    failure()
                     return
                 }
                 
@@ -31,7 +32,7 @@ final class APIManager
             {
                 print(error)
                 self.displayError(title: request.getEndPoint(), message: error.localizedDescription)
-                
+                failure()
                
                 return
             }
