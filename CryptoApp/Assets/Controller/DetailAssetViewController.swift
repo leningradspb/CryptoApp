@@ -8,6 +8,8 @@
 import UIKit
 
 final class DetailAssetViewController: UIViewController {
+    private let usdPriceLabel = CustomLabel(color: .secondaryGrey.withAlphaComponent(0.6), font: .systemFont(ofSize: 64, weight: .thin))
+    private let changePercent24HrLabel = PercentageLabel()
     private let chartView = UIView()
     let price = [7672, 8058, 8232, 6987]
     let values: [CGFloat] = [10, 8, 2, 20]
@@ -28,15 +30,7 @@ final class DetailAssetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(chartView)
-        view.backgroundColor = .blue
-        chartView.backgroundColor = .green
-        chartView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.height.equalTo(constantChartViewHeight)
-        }
+        setupUI()
         loadHistory()
         
 //        let topPoint = CGPoint(x: view.frame.midX, y: view.bounds.minY)
@@ -45,9 +39,43 @@ final class DetailAssetViewController: UIViewController {
 //        view.createDashedLine(from: topPoint, to: bottomPoint, color: .black, strokeLength: 14, gapLength: 6, width: 2)
     }
     
+    private func setupUI() {
+        navigationItem.title = asset.name.orEmpty + " " + asset.symbol.orEmpty
+        view.addSubviews([usdPriceLabel, changePercent24HrLabel, chartView])
+        view.backgroundColor = UIColor(hexString: "#F9F9F9")
+        
+        usdPriceLabel.text = asset.priceUsd?.dollarRounded
+        usdPriceLabel.textAlignment = .center
+        
+        usdPriceLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            $0.leading.equalToSuperview().offset(6)
+            $0.trailing.equalToSuperview().offset(-6)
+        }
+        
+        changePercent24HrLabel.percentageText = asset.changePercent24Hr
+        changePercent24HrLabel.textAlignment = .center
+        changePercent24HrLabel.font = .systemFont(ofSize: 22)
+        
+        changePercent24HrLabel.snp.makeConstraints {
+            $0.top.equalTo(usdPriceLabel.snp.bottom).offset(5)
+            $0.leading.equalToSuperview().offset(6)
+            $0.trailing.equalToSuperview().offset(-6)
+        }
+        
+        chartView.backgroundColor = UIColor(hexString: "#F9F9F9")
+        chartView.snp.makeConstraints {
+            $0.top.equalTo(changePercent24HrLabel.snp.bottom).offset(30)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(constantChartViewHeight)
+        }
+    }
+    
 
     private func loadHistory() {
         guard let id = asset.id else {return}
+//        let params = ["start": 1643287400]
         let request = CustomRequest("assets/\(id)/history?interval=m5")
         APIManager.shared.makeRequest(request, responseType: HistoryModel.self) { [weak self]  response in
             guard let self = self else { return }
