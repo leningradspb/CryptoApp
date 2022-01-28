@@ -45,7 +45,9 @@ class DetailAssetViewController: UIViewController {
 //                y = constantChartViewHeight - (multiplier * value)
 //            }
             
-            let y: CGFloat = i == 0 ? (constantChartViewHeight - (multiplier * value)) : nextY
+            var y: CGFloat = i == 0 ? (constantChartViewHeight - (multiplier * value)) : nextY
+            
+            
 //            nextY = i == values.count - 1 ? y : values[i + 1]
             
 //            if i == 0 {
@@ -54,7 +56,7 @@ class DetailAssetViewController: UIViewController {
 //                    let topPoint = CGPoint(x: view.frame.midX - 50, y: view.bounds.minY)
 //                    let bottomPoint = CGPoint(x: view.frame.midX, y: view.bounds.maxY)
             let topPoint = CGPoint(x: prevX, y: y)
-            nextY = i == values.count - 1 ? y : (constantChartViewHeight - (multiplier * values[i + 1]))
+            nextY = i == 0 ? y : (constantChartViewHeight - (multiplier * values[i]))
 //            nextY = (multiplier * values[i + 1])
             let bottomPoint = CGPoint(x: (view.frame.width / CGFloat(values.count)) * (CGFloat(i) + CGFloat(1)) , y: nextY)
 //            prevY = y
