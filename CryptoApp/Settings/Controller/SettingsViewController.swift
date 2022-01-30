@@ -19,6 +19,7 @@ final class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.reloadData()
     }
     
     private func setupUI() {
@@ -57,7 +58,17 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsCell.identifier, for: indexPath) as! SettingsCell
-        cell.update(blackText: LocalizationNames.icon, greyText: "Black")
+        var greyText = ""
+        switch IconManager.current {
+        case .whiteIcon:
+            greyText = LocalizationNames.white
+        case .blackIcon:
+            greyText = LocalizationNames.black
+        case .yellowIcon:
+            greyText = LocalizationNames.yellow
+        }
+    
+        cell.update(blackText: LocalizationNames.icon, greyText: greyText)
         return cell
     }
     
