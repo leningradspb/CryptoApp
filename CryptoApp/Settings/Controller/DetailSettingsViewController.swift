@@ -68,25 +68,36 @@ extension DetailSettingsViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var appIcon = "AppIcon"
+//        var appIcon = "whiteIcon"
         
         switch icons[indexPath.row] {
         case LocalizationNames.white:
-            appIcon = "whiteIcon"
+            IconManager.setIcon(.whiteIcon) { isSuccess in
+                print("isSuccess = \(isSuccess)")
+            }
+//            appIcon = "whiteIcon"
         case LocalizationNames.black:
-            appIcon = "blackIcon"
+            IconManager.setIcon(.blackIcon) { isSuccess in
+                print("isSuccess = \(isSuccess)")
+            }
+//            appIcon = "blackIcon"
         case LocalizationNames.yellow:
-            appIcon = "yellowIcon"
+            IconManager.setIcon(.yellowIcon) { isSuccess in
+                print("isSuccess = \(isSuccess)")
+            }
+//            appIcon = "yellowIcon"
         default:
             break
         }
-        UIApplication.shared.setAlternateIconName(appIcon) { error in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                print("Success!")
-            }
-        }
+        
+        
+//        UIApplication.shared.setAlternateIconName(appIcon) { error in
+//            if let error = error {
+//                print(error.localizedDescription)
+//            } else {
+//                print("Success!")
+//            }
+//        }
     }
 }
 

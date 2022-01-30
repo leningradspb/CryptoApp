@@ -44,6 +44,7 @@
 		2693106927A5592600ACA99D /* black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2693106327A5592600ACA99D /* black@3x.png */; };
 		2693106A27A5592600ACA99D /* yellow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2693106427A5592600ACA99D /* yellow@3x.png */; };
 		2693106B27A5592600ACA99D /* black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2693106527A5592600ACA99D /* black@2x.png */; };
+		2693106D27A684EA00ACA99D /* IconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2693106C27A684EA00ACA99D /* IconManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		2693106327A5592600ACA99D /* black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black@3x.png"; sourceTree = "<group>"; };
 		2693106427A5592600ACA99D /* yellow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow@3x.png"; sourceTree = "<group>"; };
 		2693106527A5592600ACA99D /* black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black@2x.png"; sourceTree = "<group>"; };
+		2693106C27A684EA00ACA99D /* IconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 			children = (
 				2693105627A473A400ACA99D /* Controller */,
 				2693105727A473AB00ACA99D /* View */,
+				2693106C27A684EA00ACA99D /* IconManager.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				2693105027A4593C00ACA99D /* WatchListViewController.swift in Sources */,
 				2693105E27A4779300ACA99D /* DetailSettingsCell.swift in Sources */,
 				2693103527A342C200ACA99D /* AssetModel.swift in Sources */,
+				2693106D27A684EA00ACA99D /* IconManager.swift in Sources */,
 				2693103327A3412100ACA99D /* UIWindow+Extension.swift in Sources */,
 				2693102327A31E1800ACA99D /* LocalizationNames.swift in Sources */,
 				2693101727A318AE00ACA99D /* Table+Extension.swift in Sources */,
