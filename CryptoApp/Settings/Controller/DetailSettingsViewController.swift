@@ -72,11 +72,11 @@ extension DetailSettingsViewController: UITableViewDelegate, UITableViewDataSour
         
         switch icons[indexPath.row] {
         case LocalizationNames.white:
-            appIcon = "AppIcon"
+            appIcon = "whiteIcon"
         case LocalizationNames.black:
-            appIcon = "AppIcon-1"
+            appIcon = "blackIcon"
         case LocalizationNames.yellow:
-            appIcon = "AppIcon-2"
+            appIcon = "yellowIcon"
         default:
             break
         }
