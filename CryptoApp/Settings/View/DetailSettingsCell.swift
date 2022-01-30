@@ -10,7 +10,6 @@ import UIKit
 final class DetailSettingsCell: UITableViewCell {
     private let infoView = InfoView()
     
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -21,9 +20,9 @@ final class DetailSettingsCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(blackText: String, greyText: String) {
+    func update(blackText: String, isNeededArrow: Bool) {
         infoView.blackText = blackText
-        infoView.greyText = greyText
+        infoView.isNeededArrow = isNeededArrow
     }
     
     private func setupUI() {
@@ -37,11 +36,15 @@ final class DetailSettingsCell: UITableViewCell {
         }
     }
     
-    
     final class InfoView: UIView {
         private let black = CustomLabel(color: .black, font: .systemFont(ofSize: 17))
-        private let grey = CustomLabel(color: .secondaryGrey.withAlphaComponent(0.6), font: .systemFont(ofSize: 17))
-        private let arrowImageView = UIImageView(image: UIImage(named: "arrow"))
+        private let arrowImageView = UIImageView(image: UIImage(named: "checkmark"))
+        
+        var isNeededArrow: Bool = true {
+            didSet {
+                arrowImageView.isHidden = !isNeededArrow
+            }
+        }
         
         var blackText: String? {
             didSet {
@@ -49,20 +52,10 @@ final class DetailSettingsCell: UITableViewCell {
             }
         }
         
-        var greyText: String? {
-            didSet {
-                grey.text = greyText
-            }
-        }
-        
         init() {
             super.init(frame: .zero)
             
-            addSubviews([black, grey, arrowImageView])
-            
-            grey.textAlignment = .right
-            
-            grey.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+            addSubviews([black, arrowImageView])
             
             black.snp.makeConstraints {
                 $0.top.equalToSuperview().offset(10)
@@ -70,19 +63,13 @@ final class DetailSettingsCell: UITableViewCell {
                 $0.bottom.equalToSuperview().offset(-10)
             }
             
-            grey.snp.makeConstraints {
-                $0.top.equalToSuperview().offset(10)
-                $0.leading.equalTo(black.snp.trailing).offset(6)
-                $0.bottom.equalToSuperview().offset(-10)
-            }
-            
             arrowImageView.clipsToBounds = true
             arrowImageView.snp.makeConstraints {
                 $0.centerY.equalToSuperview()
-                $0.leading.equalTo(grey.snp.trailing).offset(13)
+                $0.leading.equalTo(black.snp.trailing).offset(6)
                 $0.trailing.equalToSuperview().offset(-13)
-                $0.width.equalTo(9)
-                $0.height.equalTo(14)
+                $0.width.equalTo(15)
+                $0.height.equalTo(15)
             }
         }
         
@@ -90,5 +77,4 @@ final class DetailSettingsCell: UITableViewCell {
             fatalError("init(coder:) has not been implemented")
         }
     }
-   
 }

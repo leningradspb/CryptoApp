@@ -10,6 +10,7 @@ import UIKit
 final class DetailSettingsViewController: UIViewController {
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let icons = [LocalizationNames.white, LocalizationNames.black, LocalizationNames.yellow]
+    private let iconsSystem = [IconManager.AppIcon.whiteIcon, IconManager.AppIcon.blackIcon, IconManager.AppIcon.yellowIcon]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +60,9 @@ extension DetailSettingsViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailSettingsCell.identifier, for: indexPath) as! DetailSettingsCell
-        cell.update(blackText: LocalizationNames.icon, greyText: LocalizationNames.black)
+        let isNeededArrow = IconManager.current == iconsSystem[indexPath.row]
+        let blackText = icons[indexPath.row]
+        cell.update(blackText: blackText, isNeededArrow: isNeededArrow)
         return cell
     }
     
@@ -73,31 +76,23 @@ extension DetailSettingsViewController: UITableViewDelegate, UITableViewDataSour
         switch icons[indexPath.row] {
         case LocalizationNames.white:
             IconManager.setIcon(.whiteIcon) { isSuccess in
-                print("isSuccess = \(isSuccess)")
+//                print("isSuccess = \(isSuccess)")
+                tableView.reloadData()
             }
-//            appIcon = "whiteIcon"
+            //            appIcon = "whiteIcon"
         case LocalizationNames.black:
             IconManager.setIcon(.blackIcon) { isSuccess in
-                print("isSuccess = \(isSuccess)")
+                tableView.reloadData()
             }
-//            appIcon = "blackIcon"
+            //            appIcon = "blackIcon"
         case LocalizationNames.yellow:
             IconManager.setIcon(.yellowIcon) { isSuccess in
-                print("isSuccess = \(isSuccess)")
+                tableView.reloadData()
             }
 //            appIcon = "yellowIcon"
         default:
             break
         }
-        
-        
-//        UIApplication.shared.setAlternateIconName(appIcon) { error in
-//            if let error = error {
-//                print(error.localizedDescription)
-//            } else {
-//                print("Success!")
-//            }
-//        }
     }
 }
 
